@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require('cors');
+const axios = require('axios');
 const app = express();
 
 app.use(cors());
 
-const axios = require('axios');
+app.get('/', (req, res) => {
+  res.send('Test');
+});
 
 app.get('/country/:name', async (req, res) => {
   try {
