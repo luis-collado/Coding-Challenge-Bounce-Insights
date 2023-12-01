@@ -64,7 +64,7 @@ function App() {
     setLoading(true); 
 
     try {
-      const response = await fetch(`http://localhost:3001/country/${countryName}`);
+      const response = await fetch(`https://coding-challenge-bounce-insights-backend.vercel.app/country/${countryName}`);
       if (!response.ok) {
         throw new Error(`Country not found`);
       }
