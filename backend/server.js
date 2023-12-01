@@ -5,10 +5,6 @@ const app = express();
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Test');
-});
-
 app.get('/country/:name', async (req, res) => {
   try {
     const response = await axios.get(`https://restcountries.com/v3.1/name/${req.params.name}`);
@@ -21,6 +17,9 @@ app.get('/country/:name', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send('OK');
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

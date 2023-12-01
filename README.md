@@ -30,16 +30,18 @@ The application is fully deployed and can be accessed at https://coding-challeng
 
 To set up this application on your local machine, follow these steps:
 
+1. git clone https://github.com/luis-collado/Coding-Challenge-Bounce-Insights
+2. Navigate to the Frontend directory and install dependencies:
+    cd frontend
+    npm install
+    npm start
 
-git clone https://github.com/luis-collado/Coding-Challenge-Bounce-Insights
+The application will launch on localhost:3000 and should automatically open in your web browser.
 
-Navigate to the backend directory and install dependencies:
-cd backend
-npm install
-npm start
+The backend is continuously running and hosted, so there's no need for local setup to use the application. 
+However, if you wish to run the backend locally for development purposes:
 
-Open a new terminal window. Navigate to the frontend directory from the root of the project and install dependencies:
-cd frontend
-npm install
-npm start
-The application will launch on localhost:3001 and should automatically open in your web browser.
+1. Navigate to the Backend directory and install dependencies:
+    cd backend
+    npm install
+    npm start
