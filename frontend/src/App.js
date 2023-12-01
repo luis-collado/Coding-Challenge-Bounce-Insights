@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css'; 
 
 const CountryInfo = ({ country }) => {
+  const [isTranslationsOpen, setIsTranslationsOpen] = useState(false);
   const renderValue = (key, value) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       return <div className="nested-info">{renderObject(value)}</div>;
@@ -11,6 +12,10 @@ const CountryInfo = ({ country }) => {
       return value.toString();
     }
   };
+  const toggleTranslations = () => {
+    setIsTranslationsOpen(!isTranslationsOpen);
+  };
+
 
   const renderObject = (object) => {
     return Object.entries(object).map(([subKey, subValue]) => {
@@ -34,7 +39,24 @@ const CountryInfo = ({ country }) => {
     <div className="country-info">
       {Object.entries(country).map(([key, value]) => {
         if (key === 'flags' || key === 'coatOfArms') {
-          return <img key={key} src={value.png} alt={key} style={{ maxWidth: '200px' }} />;
+          return (
+            <div key={key}>
+              <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong>
+              <br />
+              <img src={value.png} alt={key} style={{ maxWidth: '200px', display: 'block', margin: '10px 0' }} />
+            </div>
+          );
+        }
+
+        if (key === 'translations') {
+          return (
+            <div key={key}>
+              <strong onClick={toggleTranslations}>
+                {key.charAt(0).toUpperCase() + key.slice(1)}: {isTranslationsOpen ? '(Hide Details)' : '(Show Details)'}
+              </strong>
+              {isTranslationsOpen && <div className="country-info-content">{renderValue(key, value)}</div>}
+            </div>
+          );
         }
 
         return (
