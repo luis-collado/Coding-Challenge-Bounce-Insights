@@ -118,7 +118,6 @@ function App() {
         />
         <button type="submit" className="search-button">Get Country Info</button>
       </form>
-
       {loading && <p>Loading...</p>}
       {error && <p className="error-message">{error}</p>}
       {!loading && countryInfo && countryInfo.length > 0 && <CountryInfo country={countryInfo[0]} />}
