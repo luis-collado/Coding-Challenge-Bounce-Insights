@@ -62,11 +62,14 @@ function App() {
     e.preventDefault();
     setError('');
     setLoading(true); 
-
+  
     try {
       const response = await fetch(`https://coding-challenge-bounce-insights-backend.vercel.app/country/${countryName}`);
       if (!response.ok) {
-        throw new Error(`Country not found`);
+        if (response.status === 404) {
+          throw new Error('Country not found. Please try a different name.');
+        }
+        throw new Error(`There was a problem fetching the country data . ${response.status}`);
       }
       const data = await response.json();
       setCountryInfo(data);
@@ -75,9 +78,10 @@ function App() {
       setError(error.message);
       setCountryInfo(null);
     } finally {
-      setLoading(false); // Desactivar el indicador de carga
+      setLoading(false); 
     }
   };
+
 
   return (
     <div className="app-container">
