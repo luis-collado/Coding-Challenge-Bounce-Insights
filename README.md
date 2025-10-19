@@ -1,4 +1,4 @@
-# Coding-Challenge-Bounce-Insights
+# Coding-Challenge
 
 ## Overview
 
